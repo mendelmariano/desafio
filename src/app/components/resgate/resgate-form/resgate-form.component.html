@@ -1,0 +1,43 @@
+<h1> Dados dos Investimentos</h1>
+
+<div style="display: flex;">
+<mat-card class="investment">
+
+        <mat-card-title> Nome </mat-card-title>
+        <mat-card-subtitle> {{investment?.nome}} </mat-card-subtitle>
+</mat-card>
+
+<mat-card class="investment">
+<mat-card-title> Objetivo </mat-card-title>
+        <mat-card-subtitle> {{investment?.objetivo}} </mat-card-subtitle>
+</mat-card>
+
+<mat-card class="investment">
+  <mat-card-title> Saldo Total </mat-card-title>
+          <mat-card-subtitle> {{investment?.saldoTotal | currency: 'BRL'}} </mat-card-subtitle>
+  </mat-card>
+</div>
+
+
+<h1>Resgate</h1>
+
+<mat-card>
+  <mat-card-title> Ações </mat-card-title>
+  <table>
+    <th> Ação </th>
+    <th> Saldo Acumulado </th>
+    <th> Valor a resgatar </th>
+
+    <tr *ngFor="let acaoCalculada of acoesCalculadas ">
+      <td> {{acaoCalculada?.nome }} </td>
+      <td> {{acaoCalculada?.saldoAcumulado | currency: 'BRL' }} </td>
+      <td>  </td>
+    </tr>
+
+  </table>
+
+
+
+</mat-card>
+
+

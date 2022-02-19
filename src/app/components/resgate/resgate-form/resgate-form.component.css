@@ -1,0 +1,17 @@
+.investment{
+
+  flex: 1 1 auto;
+}
+table{
+  border-style: dashed;
+  width: 100%;
+  margin-top: auto;
+}
+
+table > td {
+  text-align: right;
+}
+
+table > th {
+  text-align: left;
+}

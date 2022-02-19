@@ -19,8 +19,8 @@ import { ForDirective } from './directives/for.directive';
 import { ProductCreateComponent } from './components/product/product-create/product-create.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatFormFieldModule,} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ProductReadComponent } from './components/product/product-read/product-read.component';
 import { ProductRead2Component } from './components/product/product-read2/product-read2.component';
@@ -34,6 +34,7 @@ import { ProductUpdateComponent } from './components/product/product-update/prod
 import { ProductDeleteComponent } from './components/product/product-delete/product-delete.component';
 import { InvestmentCrudComponent } from './views/investment-crud/investment-crud.component';
 import { InvestmentReadComponent } from './components/investment/investment-read/investment-read.component';
+import { ResgateFormComponent } from './components/resgate/resgate-form/resgate-form.component';
 
 
 registerLocaleData(localePt);
@@ -56,6 +57,7 @@ registerLocaleData(localePt);
     ProductDeleteComponent,
     InvestmentCrudComponent,
     InvestmentReadComponent,
+    ResgateFormComponent,
 
   ],
   imports: [
@@ -75,6 +77,7 @@ registerLocaleData(localePt);
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    ReactiveFormsModule,
 
   ],
   providers: [

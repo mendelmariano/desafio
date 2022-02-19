@@ -9,7 +9,7 @@ import { InvestmentService } from '../shared/investment.service';
 })
 export class InvestmentReadComponent implements OnInit {
 
-  displayedColumns = ['nome', 'objetivo', 'saldoTotal'];
+  displayedColumns = ['nome', 'objetivo', 'saldoTotal', 'action'];
   investimentos: Investment[];
 
   constructor(private investmentService:InvestmentService) { }
@@ -20,8 +20,9 @@ export class InvestmentReadComponent implements OnInit {
 
   buscaDados(){
     this.investmentService.read().subscribe(
-      (investimento)=>{
-        console.log("teste",investimento);
+      (response)=>{
+        console.log("teste",response);
+        this.investimentos = response;
       }
     )
 
