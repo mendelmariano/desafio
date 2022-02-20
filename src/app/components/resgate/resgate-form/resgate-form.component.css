@@ -15,3 +15,16 @@ table > td {
 table > th {
   text-align: left;
 }
+
+button {
+  align-items: center;
+  margin: 20px 15px 0px 0px;
+  align-self: flex-end;
+  float: right;
+}
+
+.text-danger{
+  color: red;
+  text-decoration: solid;
+  font-size: small;
+}
