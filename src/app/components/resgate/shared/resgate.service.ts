@@ -25,6 +25,11 @@ export class ResgateService {
 
   openDialog(msgs): void {
     const dialogRef = this.dialog.open(LiveDialogComponent, {
+      width:'auto',
+      maxWidth: '400px',
+      height:'auto',
+      hasBackdrop: true,
+      maxHeight  : '700px',
       data: { msgs }
     });
 

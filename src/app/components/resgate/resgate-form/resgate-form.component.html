@@ -44,7 +44,7 @@
         <td> {{acaoCalculada?.saldoAcumulado | currency: 'BRL' }} </td>
         <td>
           <div>
-            <input [formControlName]="acaoCalculada?.id">
+            <input [formControlName]="acaoCalculada?.id" type="number">
             <div class="text-danger">
               <div *ngIf="formularioResgate.get(acaoCalculada?.id).errors">Valor de resgate máximo não permitido!</div>
             </div>

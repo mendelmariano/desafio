@@ -1,5 +1,4 @@
-.example-button-row button,
-.example-button-row a {
-  margin-right: 8px;
-  color: aliceblue;
+button {
+  align-self: flex-end;
+  float: right;
 }
