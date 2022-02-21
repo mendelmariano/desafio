@@ -1,0 +1,27 @@
+<div *ngIf="tipoMsg; else sucesso">
+        <h1 mat-dialog-title>Erro!</h1>
+      <div mat-dialog-content>
+        <p *ngFor="let msg of data.msgs; let i=index">
+        {{i+1}} - {{msg}} <br>
+        </p>
+
+      </div>
+      <div mat-dialog-actions class="example-button-row">
+
+        <button  mat-raised-button color="warn" (click)="closeModal()" >Ok</button>
+      </div>
+</div>
+
+<ng-template #sucesso>
+  <h1 mat-dialog-title>Erro!</h1>
+<div mat-dialog-content>
+  <p>
+    Valores resgatados com sucesso! <br>
+  </p>
+
+</div>
+<div mat-dialog-actions class="example-button-row">
+
+  <button mat-raised-button color="primary" (click)="success()">Ok</button>
+</div>
+</ng-template>

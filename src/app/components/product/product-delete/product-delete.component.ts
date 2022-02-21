@@ -21,7 +21,6 @@ export class ProductDeleteComponent implements OnInit {
     this.produtoService.readById(id).subscribe(
 
       produto=>{
-        console.log("teste ",this.product);
         this.product=produto
       }
       );

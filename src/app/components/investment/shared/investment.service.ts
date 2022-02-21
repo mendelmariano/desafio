@@ -41,7 +41,6 @@ export class InvestmentService {
 
   investmentsToJson(response:any):Investment[]{
     //console.log('response do service',response);
-    console.log("lista: ",response.response.data.listaInvestimentos);
 
     return response.response.data.listaInvestimentos;
 

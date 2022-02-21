@@ -20,14 +20,12 @@ export class ProductUpdateComponent implements OnInit {
     this.produtoService.readById(id).subscribe(
 
       produto=>{
-        console.log("teste ",this.product);
         this.product=produto
       }
       );
   }
 
   updateProduct():void {
-    console.log(this.product);
     this.produtoService.update(this.product).subscribe(
       ()=>{
         this.produtoService.showMessage('Produto atualizado com sucesso!');

@@ -35,6 +35,10 @@ import { ProductDeleteComponent } from './components/product/product-delete/prod
 import { InvestmentCrudComponent } from './views/investment-crud/investment-crud.component';
 import { InvestmentReadComponent } from './components/investment/investment-read/investment-read.component';
 import { ResgateFormComponent } from './components/resgate/resgate-form/resgate-form.component';
+import { InputMaskDirective } from './directives/input-mask.directive';
+import { CurrencyPipe } from '@angular/common';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LiveDialogComponent } from './views/assets/live-dialog/live-dialog.component';
 
 
 registerLocaleData(localePt);
@@ -58,6 +62,10 @@ registerLocaleData(localePt);
     InvestmentCrudComponent,
     InvestmentReadComponent,
     ResgateFormComponent,
+    InputMaskDirective,
+    LiveDialogComponent,
+
+
 
   ],
   imports: [
@@ -78,13 +86,16 @@ registerLocaleData(localePt);
     MatPaginatorModule,
     MatSortModule,
     ReactiveFormsModule,
+    MatDialogModule,
 
   ],
+
   providers: [
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
-    }
+    },
+    CurrencyPipe
   ],
   bootstrap: [AppComponent]
 })

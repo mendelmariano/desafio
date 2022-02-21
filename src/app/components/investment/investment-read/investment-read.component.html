@@ -51,20 +51,7 @@
     </ng-container>
 
 
-    <!-- Action Column -->
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef >Ações</th>
-      <td mat-cell *matCellDef="let row">
-        <a *ngIf="row.indicadorCarencia==='N'" routerLink="/resgate/update/{{row.nome}}"  class="edit">
-          <i  class="material-icons"> attach_money </i> <button class="mat-button"> Resgatar </button>
-        </a>
 
-       <!--  <a routerLink="/products/delete/{{row.id}}" class="delete">
-          <i class="material-icons"> delete </i>
-        </a> -->
-
-      </td>
-    </ng-container>
 
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

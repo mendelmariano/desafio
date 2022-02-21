@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import {formatNumber} from '@angular/common';
+import {CurrencyPipe, formatNumber} from '@angular/common';
 
 import { Investment } from '../../investment/shared/investment.model';
 import { InvestmentService } from '../../investment/shared/investment.service';
@@ -22,11 +22,13 @@ export class ResgateFormComponent implements OnInit {
   public acoesCalculadas: AcaoCalculada[] = [];
   formularioResgate: FormGroup;
   inputResgate = {};
-  msgErro;
+  msgsErro = [];
+
 
 
   constructor(private router: Router, private investmentService: InvestmentService, private resgateService: ResgateService,
-              private route:ActivatedRoute, private fb:FormBuilder,  private snackBar: MatSnackBar) { }
+              private route:ActivatedRoute, private fb:FormBuilder,  private snackBar: MatSnackBar,
+               private curreencyPipe: CurrencyPipe) { }
 
   ngOnInit(): void {
     this.loadInvestment(this.route.snapshot.paramMap.get('nome'));
@@ -43,10 +45,9 @@ export class ResgateFormComponent implements OnInit {
           investimento=> {
             this.investment = investimento;
             this.acoes.push(...investimento.acoes);
-            this.calculaAcao(this.acoes, this.investment);
+            this.calculaAcao(this.acoes);
           }
         )
-        console.log("teste ",this.investment);
       }
       );
   }
@@ -68,16 +69,13 @@ export class ResgateFormComponent implements OnInit {
 
 
   createResgate(campo){
-    console.log('campooo: ', campo);
     const resgateFormGroup = this.fb.group(campo);
     this.resgates.push(resgateFormGroup);
   }
 
   onSubmit(formValue: any){}
 
-  public calculaAcao(acoes: Acao[], investimento: Investment){
-    console.log("Ação k: ", acoes);
-    console.log("Investimento k: ", investimento);
+  public calculaAcao(acoes: Acao[]){
 
 
       acoes.forEach(
@@ -86,17 +84,11 @@ export class ResgateFormComponent implements OnInit {
           acaoCalculada.id = acao?.id;
           acaoCalculada.nome = acao?.nome;
           acaoCalculada.saldoAcumulado = ((acao?.percentual*this.investment.saldoTotal)/100);
-          console.log("Ação tal: ", acaoCalculada );
           this.acoesCalculadas.push(acaoCalculada);
           this.inputResgate[acao?.id] = ['', Validators.max( acaoCalculada.saldoAcumulado)];
         }
       )
       this.createFormResgate();
-      console.log("inputss: ",this.inputResgate);
-      console.log("acoes calculadas: ", this.acoesCalculadas)
-
-
-
     return
   }
 
@@ -105,12 +97,7 @@ export class ResgateFormComponent implements OnInit {
   }
 
   submitForm(){
-    console.log("Formulário: ", this.formularioResgate.value);
     const resgatesObj = this.formularioResgate.value;
-    const resgatesMaiores=[];
-    const camposVazios=[];
-    const resgatesSucesso = [];
-
 
     var resgatesArray=[];
     Object.keys(resgatesObj).map(function(key) { // Converte o objeto do form em array para percorrê-lo
@@ -118,21 +105,35 @@ export class ResgateFormComponent implements OnInit {
       return
     });
 
+    const verificaDadosForm = this.resgateService.verificaFormVazio(resgatesArray);
 
+
+    if(verificaDadosForm>0){
+    this.msgsErro = []; // Esvazia o array antes de entrar no laço ( Para apagar mensagens anteriores)
     resgatesArray.forEach((e, i)=>{
       if(i!=null && e!=""){
         const acao = this.acoesCalculadas.filter(e=>e.id == i.toString());
         if(e>acao[0]?.saldoAcumulado){
           const msg = `O valor de resgate do (a) ${acao[0]?.nome} não pode ser maior que
           R$ ${acao[0]?.saldoAcumulado.toFixed(2)} .`;
-          this.msgErro = msg;
-          return this.resgateService.showMessage(msg);
+          this.msgsErro.push(msg);
+
         }
       }
-
-
-    })
-
+    });
+    this.resgateService.openDialog(this.msgsErro);
+    }else{
+      this.resgateService.showMessage("Por favor, preencha algum valor para resgatar!");
+    }
   }
 
+
+
+
+
 }
+
+
+
+
+
