@@ -23,7 +23,6 @@
     "@angular/router": "~9.1.0",
     "angular-forms-input-masks": "^1.0.3",
     "angular-money-mask": "^1.0.0",
-
     "ng2-currency-mask": "^13.0.3",
     "ngx-currency": "^2.5.3",
     "ngx-mask": "^13.1.1",

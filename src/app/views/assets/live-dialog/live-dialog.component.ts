@@ -18,7 +18,7 @@ export class LiveDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.verificaTipoMsg(this.data.msgs);
-    console.log("Mensagens: ", this.data.msgs);
+    //console.log("Mensagens: ", this.data.msgs);
   }
 
   closeModal(): void {
