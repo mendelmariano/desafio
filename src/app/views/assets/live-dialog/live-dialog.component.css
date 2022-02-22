@@ -4,6 +4,9 @@ button {
 }
 
 .closeModal > button{
+  align-items: center;
+  margin: 20px 15px 0px 0px;
+  align-self: flex-end;
   float: right;
 }
 
@@ -20,4 +23,15 @@ button {
 .title{
   text-align: center;
   text-decoration: solid;
+}
+
+#buttonClose{
+  float: right;
+}
+
+.light-button {
+  height: 50px;
+  width: 150px;
+  font-size: 110%;
+  border: 2px dotted rgb(255, 255, 255) !important;
 }

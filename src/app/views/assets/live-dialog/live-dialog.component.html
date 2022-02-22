@@ -1,16 +1,16 @@
 <div *ngIf="tipoMsg; else sucesso">
         <h1 mat-dialog-title class="title">DADOS INVALIDOS!</h1>
         <mat-card-subtitle class="subtitle">  Você preencheu um ou mais campos com um valor acima do permitido:</mat-card-subtitle>
-      <div mat-dialog-content>
+      <div mat-dialog-content class="mat-typography">
 
         <p *ngFor="let msg of data.msgs; let i=index">
         {{i+1}} - {{msg}} <br>
         </p>
 
       </div>
-      <div mat-dialog-actions class="example-button-row" class="closeModal" >
+      <div mat-dialog-actions  align="center" class="closeModal">
 
-        <button  mat-raised-button color="warn" (click)="closeModal()" >Corrigir</button>
+        <button id="buttonClose" class="light-button" mat-raised-button color="warn" (click)="closeModal()" >Corrigir</button>
       </div>
 </div>
 
@@ -22,8 +22,8 @@
   </p>
 
 </div>
-<div mat-dialog-actions class="example-button-row" class="success">
+<div mat-dialog-actions  align="center" class="success">
 
-  <button mat-raised-button color="primary" (click)="success()">Novo Resgate</button>
+  <button mat-raised-button class="light-button" color="primary" (click)="success()">Novo Resgate</button>
 </div>
 </ng-template>
