@@ -1,6 +1,6 @@
 import { Overlay } from '@angular/cdk/overlay';
 import { HttpClientModule } from '@angular/common/http';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { InvestmentReadComponent } from './investment-read.component';
@@ -27,4 +27,6 @@ describe('InvestmentReadComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

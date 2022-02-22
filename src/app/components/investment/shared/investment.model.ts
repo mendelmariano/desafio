@@ -6,5 +6,5 @@ export interface Investment {
   objetivo: string,
   indicadorCarencia: string,
   saldoTotal: number,
-  acoes: Acao[],
+  acoes?: Acao[],
 }
