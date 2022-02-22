@@ -1,27 +1,29 @@
 <div *ngIf="tipoMsg; else sucesso">
-        <h1 mat-dialog-title>Erro!</h1>
+        <h1 mat-dialog-title class="title">DADOS INVALIDOS!</h1>
+        <mat-card-subtitle class="subtitle">  Você preencheu um ou mais campos com um valor acima do permitido:</mat-card-subtitle>
       <div mat-dialog-content>
+
         <p *ngFor="let msg of data.msgs; let i=index">
         {{i+1}} - {{msg}} <br>
         </p>
 
       </div>
-      <div mat-dialog-actions class="example-button-row">
+      <div mat-dialog-actions class="example-button-row" class="closeModal" >
 
-        <button  mat-raised-button color="warn" (click)="closeModal()" >Ok</button>
+        <button  mat-raised-button color="warn" (click)="closeModal()" >Corrigir</button>
       </div>
 </div>
 
 <ng-template #sucesso>
-  <h1 mat-dialog-title>Resgate!</h1>
+
 <div mat-dialog-content>
   <p>
-    Valores resgatados com sucesso! <br>
+    Resgate efetuado com sucesso! <br>
   </p>
 
 </div>
-<div mat-dialog-actions class="example-button-row">
+<div mat-dialog-actions class="example-button-row" class="success">
 
-  <button mat-raised-button color="primary" (click)="success()">Ok</button>
+  <button mat-raised-button color="primary" (click)="success()">Novo Resgate</button>
 </div>
 </ng-template>

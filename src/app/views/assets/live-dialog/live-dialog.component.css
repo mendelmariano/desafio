@@ -2,3 +2,22 @@ button {
   align-self: flex-end;
   float: right;
 }
+
+.closeModal > button{
+  float: right;
+}
+
+.success > button{
+  float: right;
+  mask-border-outset: inherit;
+}
+
+.subtitle{
+  color: black;
+  text-align: center;
+}
+
+.title{
+  text-align: center;
+  text-decoration: solid;
+}
