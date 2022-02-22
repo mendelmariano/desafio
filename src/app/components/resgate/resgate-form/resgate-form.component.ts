@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
-import {CurrencyPipe, formatNumber} from '@angular/common';
-
 import { Investment } from '../../investment/shared/investment.model';
 import { InvestmentService } from '../../investment/shared/investment.service';
 import { Acao } from '../../shared/acao.model';
 import { AcaoCalculada } from '../../shared/acaoCalculada.model';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ResgateService } from '../shared/resgate.service';
 
 @Component({
@@ -26,9 +23,10 @@ export class ResgateFormComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private investmentService: InvestmentService, private resgateService: ResgateService,
-              private route:ActivatedRoute, private fb:FormBuilder,  private snackBar: MatSnackBar,
-               private curreencyPipe: CurrencyPipe) { }
+  constructor(private router: Router, private investmentService: InvestmentService,
+              private resgateService: ResgateService,
+              private route:ActivatedRoute, private fb:FormBuilder,
+               ) { }
 
   ngOnInit(): void {
     this.loadInvestment(this.route.snapshot.paramMap.get('nome'));

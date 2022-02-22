@@ -1,4 +1,10 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ActivatedRoute, convertToParamMap, Router, RouterModule } from '@angular/router';
+import { InvestmentService } from '../../investment/shared/investment.service';
 
 import { ResgateFormComponent } from './resgate-form.component';
 
@@ -8,7 +14,17 @@ describe('ResgateFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResgateFormComponent ]
+      imports: [ RouterModule, MatSnackBarModule, HttpClientModule, MatDialogModule],
+      declarations: [ ResgateFormComponent ],
+      providers: [{ provide: Router, useValue: "" },
+                    FormBuilder, InvestmentService, MatSnackBar, HttpClient, {
+                      provide: ActivatedRoute,
+                      useValue: {snapshot: {
+                        paramMap: convertToParamMap({
+                          nome: ""
+                        })
+                      }}
+                    }]
     })
     .compileComponents();
   }));

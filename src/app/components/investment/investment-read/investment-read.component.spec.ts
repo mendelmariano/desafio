@@ -1,4 +1,7 @@
+import { Overlay } from '@angular/cdk/overlay';
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { InvestmentReadComponent } from './investment-read.component';
 
@@ -8,7 +11,9 @@ describe('InvestmentReadComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InvestmentReadComponent ]
+      imports: [HttpClientModule],
+      declarations: [ InvestmentReadComponent],
+      providers: [MatSnackBar, Overlay]
     })
     .compileComponents();
   }));

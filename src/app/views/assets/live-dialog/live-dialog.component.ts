@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 @Component({
@@ -34,7 +34,13 @@ export class LiveDialogComponent implements OnInit {
 
   verificaTipoMsg(msgs:[]){
 
-    this.tipoMsg = msgs.length;
+    this.tipoMsg = msgs?.length;
   };
 
+
+
 }
+
+
+
+
